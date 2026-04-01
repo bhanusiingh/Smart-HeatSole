@@ -22,3 +22,5 @@ Thumbs.db
 # 🔧 Virtual environments
 venv/
 env/
+desktop.ini
+test_server.py
