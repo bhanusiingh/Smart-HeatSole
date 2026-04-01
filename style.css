@@ -1,0 +1,501 @@
+:root {
+    /* Color Palette */
+    --bg-main: #0b0f19;
+    --bg-card: #151b2b;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --accent-blue: #3b82f6;
+    --accent-blue-hover: #2563eb;
+    --accent-red: #ef4444;
+    --accent-orange: #f59e0b;
+    --accent-green: #10b981;
+    --border-color: #1e293b;
+
+    /* Heat Levels */
+    --heat-0: #334155;
+    --heat-1: #60a5fa;
+    /* Cool */
+    --heat-2: #fbbf24;
+    /* Warm */
+    --heat-3: #ef4444;
+    /* Very Warm */
+
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+
+    /* Layout */
+    --border-radius: 16px;
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Base Buttons */
+.btn {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background: #1e293b;
+}
+
+/* App Container */
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    transform: rotate(-15deg);
+}
+
+.branding h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.status-indicators {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.battery {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.battery.low {
+    color: var(--accent-red);
+}
+
+.connect-btn {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+.connect-btn:hover {
+    background: var(--accent-blue-hover);
+}
+
+.connect-btn.connected {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Warning Banner */
+.warning-banner {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--accent-red);
+    color: #fca5a5;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    animation: flash 2s infinite;
+}
+
+@keyframes flash {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+}
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+.btn:active {
+    transform: scale(0.95);
+}
+.card.span-2 {
+    grid-column: span 2;
+}
+
+.card h2 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Temperature Display */
+.temp-display {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.temp-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.temp-unit {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.temp-display.small .temp-value {
+    font-size: 2rem;
+}
+
+.environment-icon {
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    margin-right: 8px;
+}
+
+/* Mode Switch Toggle */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.mode-toggle span.active {
+    color: var(--accent-blue);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--accent-blue);
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* Manual Controls */
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.heat-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.heat-btn {
+    padding: 12px 0;
+}
+
+.heat-btn.active {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* Heat Indicator Bar */
+.heat-indicator {
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 4px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#heat-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease, background 0.4s ease;
+   
+}
+#heat-bar.level-3 {
+    box-shadow: 0 0 10px var(--heat-3);
+}
+
+#heat-bar.level-0 {
+    width: 0%;
+    background: var(--heat-0);
+}
+
+#heat-bar.level-1 {
+    width: 33%;
+    background: var(--heat-1);
+}
+
+#heat-bar.level-2 {
+    width: 66%;
+    background: var(--heat-2);
+}
+
+#heat-bar.level-3 {
+    width: 100%;
+    background: var(--heat-3);
+}
+
+#heat-bar.level-overheat {
+    width: 100%;
+    background: var(--accent-red);
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+/* Auto Controls AI Animation */
+.ai-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.ai-animation {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-icon {
+    font-size: 2.5rem;
+    color: var(--accent-blue);
+    z-index: 2;
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--accent-blue);
+    animation: AIpulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes AIpulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.current-ai-level {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+#ai-heat-level {
+    color: var(--accent-orange);
+}
+
+/* User Profiles */
+.profiles-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.profile-btn {
+    flex-direction: column;
+    padding: 12px 4px;
+    font-size: 0.85rem;
+    gap: 8px;
+}
+
+.profile-btn i {
+    font-size: 1.2rem;
+}
+
+.profile-btn.active {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* Modals & Utils */
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    max-width: 90%;
+    text-align: center;
+}
+
+.modal h2 {
+    margin-bottom: 10px;
+}
+
+.modal p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.warmth-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.warmth-btn {
+    padding: 15px;
+    justify-content: flex-start;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card.span-2 {
+        grid-column: span 1;
+    }
+
+    .profiles-container {
+        grid-template-columns: 1fr;
+    }
+}

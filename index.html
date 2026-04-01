@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Heating Insole</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- First Launch Preference Modal -->
+    <div id="first-launch-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <h2>Welcome to Smart Insole</h2>
+            <p>Please select your preferred default warmth level:</p>
+            <div class="warmth-options">
+                <button class="btn warmth-btn" data-level="1"><i class="fa-solid fa-snowflake"></i> Cool (Level 1)</button>
+                <button class="btn warmth-btn" data-level="2"><i class="fa-solid fa-temperature-half"></i> Warm (Level 2)</button>
+                <button class="btn warmth-btn" data-level="3"><i class="fa-solid fa-fire"></i> Very Warm (Level 3)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header>
+            <div class="branding">
+                <i class="fa-solid fa-shoe-prints logo-icon"></i>
+                <h1>HeatSole</h1>
+            </div>
+          <div class="status-indicators">
+    <div class="status-item battery">
+        <i class="fa-solid fa-battery-three-quarters"></i>
+        <span id="battery-value">--%</span>
+    </div>
+
+    <!-- ✅ ESP32 Connection Status -->
+    <div class="status-item">
+        <span id="esp-status" style="color: red; font-weight: 600;">
+            🔴 Not Connected
+        </span>
+    </div>
+</div>
+        </header>
+
+        <!-- Warning Banner -->
+        <div id="warning-banner" class="warning-banner hidden">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span id="warning-message">Overheating detected! Reducing heat...</span>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <main>
+            <div class="dashboard-grid">
+                
+                <!-- Temperature Card -->
+                <div class="card temp-card">
+                    <h2>Shoe Temperature</h2>
+                    <div class="temp-display">
+                        <span id="shoe-temp" class="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                </div>
+
+                <!-- Environment Card -->
+                <div class="card env-card">
+                    <h2>Outside Temp</h2>
+                    <div class="temp-display small">
+                        <i class="fa-solid fa-cloud-sun environment-icon"></i>
+                        <span id="outside-temp" class="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                </div>
+
+                <!-- Control Panel Card -->
+                <div class="card control-card span-2">
+                    <div class="card-header">
+                        <h2>Heating Control</h2>
+                        <div class="mode-toggle">
+                            <span id="mode-label-manual" class="active">MANUAL</span>
+                            <label class="switch">
+                                <input type="checkbox" id="mode-switch">
+                                <span class="slider round"></span>
+                            </label>
+                            <span id="mode-label-auto">AUTO</span>
+                        </div>
+                    </div>
+                    
+                    <div id="manual-controls" class="control-section">
+                        <p class="section-desc">Set your preferred heat level</p>
+                        <div class="heat-buttons">
+                            <button class="btn heat-btn" data-heat="0">OFF</button>
+                            <button class="btn heat-btn" data-heat="1">LOW</button>
+                            <button class="btn heat-btn" data-heat="2">MED</button>
+                            <button class="btn heat-btn" data-heat="3">HIGH</button>
+                        </div>
+                        <div class="heat-indicator">
+                            <div id="heat-bar" class="level-0"></div>
+                        </div>
+                    </div>
+
+                    <div id="auto-controls" class="control-section hidden">
+                        <div class="ai-status">
+                            <div class="ai-animation">
+                                <div class="pulse-ring"></div>
+                                <i class="fa-solid fa-robot ai-icon"></i>
+                            </div>
+                            <p>AI is managing your comfort</p>
+                            <p class="current-ai-level">Predicted Level: <span id="ai-heat-level">--</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profiles Card -->
+                <div class="card profile-card span-2">
+                    <h2>User Profiles</h2>
+                    <div class="profiles-container">
+                        <button class="btn profile-btn active" data-profile="daily"><i class="fa-solid fa-sun"></i> Daily Use</button>
+                        <button class="btn profile-btn" data-profile="winter"><i class="fa-solid fa-snowflake"></i> Winter</button>
+                        <button class="btn profile-btn" data-profile="harsh"><i class="fa-solid fa-icicles"></i> Harsh Winter</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
