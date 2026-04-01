@@ -39,27 +39,24 @@ py -m pip install pandas scikit-learn flask requests flask-cors python-dotenv
 
 ---
 
-2. Setup environment variables
+### 2. Setup environment variables
 Create .env file:
-
----
-
 API_KEY=your_api_key
 CITY=your_city
 
 ---
 
-3. Train model
+### 3. Train model
 py train.py
 
 ---
 
-4. Run backend
+### 4. Run backend
 py app.py
 
 ---
 
-5. Open frontend
+### 5. Open frontend
 Open index.html in browser
 
 ---
