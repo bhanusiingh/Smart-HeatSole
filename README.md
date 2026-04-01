@@ -1,6 +1,16 @@
-# 🔥 HeatSole-AI
+# 🔥 Smart-HeatSole
+## 📸 Demo
+
+![App UI](<img width="641" height="736" alt="image" src="https://github.com/user-attachments/assets/68062bfa-2a97-4735-b8de-eee392fbd464" />
+)
 
 AI-powered smart heating insole using ESP32, real-time sensors, and machine learning for adaptive comfort.
+
+---
+
+## 💡 What it does
+
+This system automatically adjusts heating levels based on real-time foot temperature and environmental conditions using machine learning.
 
 ---
 
